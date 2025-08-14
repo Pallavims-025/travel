@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #d7a3de;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            background: teal;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkcyan;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Travel Booking Form</h2>
+
+    <form id="travelForm">
+        <label>Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Destination:</label>
+        <input type="text" id="destination" required>
+
+        <label> Date:</label>
+        <input type="date" id="date" required>
+
+        <label>Number of Travelers:</label>
+        <input type="number" id="travelers" min="1" required>
+
+        <label>Travel Class:</label>
+        <select id="class" required>
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+            <option value="First Class">First Class</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("travelForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get values
+            let name = document.getElementById("name").value;
+            let destination = document.getElementById("destination").value;
+            let date = document.getElementById("date").value;
+            let travelers = document.getElementById("travelers").value;
+            let travelClass = document.getElementById("class").value;
+
+            // Store data in URL parameters
+            let params = new URLSearchParams({
+                name: name,
+                destination: destination,
+                date: date,
+                travelers: travelers,
+                travelClass: travelClass
+            });
+
+            // Redirect to confirmation page with data
+            window.location.href = "confirmation.html?" + params.toString();
+        });
+    </script>
+
+</body>
+</html>

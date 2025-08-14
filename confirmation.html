@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e7f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: teal;
+        }
+        .details {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+        strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Booking Confirmation</h2>
+    <div class="details" id="bookingDetails"></div>
+
+    <script>
+        // Get URL parameters
+        let params = new URLSearchParams(window.location.search);
+        let name = params.get("name");
+        let destination = params.get("destination");
+        let date = params.get("date");
+        let travelers = params.get("travelers");
+        let travelClass = params.get("travelClass");
+
+        // Display booking details
+        document.getElementById("bookingDetails").innerHTML = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Destination:</strong> ${destination}</p>
+            <p><strong>Date:</strong> ${date}</p>
+            <p><strong>Number of Travelers:</strong> ${travelers}</p>
+            <p><strong>Class:</strong> ${travelClass}</p>
+        `;
+    </script>
+
+</body>
+</html>
